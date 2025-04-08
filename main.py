@@ -1,14 +1,10 @@
 import streamlit as st
 import os
 
-# Force CPU usage and prevent PyTorch conflicts
+# Configure environment variables
 os.environ['CUDA_VISIBLE_DEVICES'] = ''
 os.environ['PYTORCH_ENABLE_MPS_FALLBACK'] = '1'
 os.environ['TOKENIZERS_PARALLELISM'] = 'false'
-
-# Set this before importing torch
-import torch
-torch.set_num_threads(1)
 
 # Configure Streamlit
 st.set_page_config(
@@ -16,6 +12,14 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# Try importing torch with error handling
+try:
+    import torch
+    torch.set_num_threads(1)
+except ImportError:
+    st.error("Failed to import PyTorch. Please check the installation.")
+    st.stop()
 
 # Import modules after configuration
 from my_modules.regression import regression_app
