@@ -13,12 +13,19 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Try importing torch with error handling
+# Try importing torch with better error handling
 try:
     import torch
     torch.set_num_threads(1)
-except ImportError:
-    st.error("Failed to import PyTorch. Please check the installation.")
+    st.sidebar.success("PyTorch version: " + torch.__version__)
+except ImportError as e:
+    st.error(f"""
+    Failed to import PyTorch. Please install it using:
+    ```
+    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+    ```
+    Error: {str(e)}
+    """)
     st.stop()
 
 # Import modules after configuration
