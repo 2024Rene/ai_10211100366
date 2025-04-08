@@ -6,6 +6,9 @@ os.environ['CUDA_VISIBLE_DEVICES'] = ''
 os.environ['PYTORCH_ENABLE_MPS_FALLBACK'] = '1'
 os.environ['TOKENIZERS_PARALLELISM'] = 'false'
 
+# Get port from environment variable for Heroku
+port = int(os.environ.get('PORT', 8501))
+
 # Configure Streamlit
 st.set_page_config(
     page_title="AI Exam App",
