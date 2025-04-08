@@ -103,7 +103,7 @@ def llm_qa_app():
             st.write("### Ask Questions")
             
             # Create three columns for better layout
-            col1, col2, col3 = st.columns([3, 1, 1])
+            col1, col2, col3 = st.columns([3, 1, 1])#)
             
             with col1:
                 question = st.text_input(
