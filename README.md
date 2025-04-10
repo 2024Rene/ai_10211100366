@@ -24,3 +24,5 @@ PyTorch for building and training the neural network.
 
 
 Deployment : Heroku was used for the deployment of this project 
+
+
